@@ -51,12 +51,16 @@ variable "subnets" {
   }
 }
 
-variable "rt-private-association" {
-  type        = map(map(string))
-  description = "A map of maps of string for the Route Tables"
+variable "route-tables" {
+  type = map(map(string))
   default = {
     private = {
-      vpc = "vpc-a-virginia-prod"
+      vpc    = "vpc-a-virginia-prod"
+      subnet = "subnet-a-virginia-prod-private"
+    }
+    public = {
+      vpc    = "vpc-a-virginia-prod"
+      subnet = "subnet-a-virginia-prod-public"
     }
   }
 }
