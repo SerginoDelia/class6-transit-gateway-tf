@@ -5,6 +5,7 @@ variable "transit-gateway" {
   default = {
     vpc-a-virginia-prod = {
       cidr = "10.40.0.0/16"
+      Name = "vpc-a-virginia-prod"
     }
 
     vpc-d-virginia-dev = {
@@ -47,5 +48,15 @@ variable "subnets" {
       az   = "us-east-1a"
     }
 
+  }
+}
+
+variable "rt-private-association" {
+  type        = map(map(string))
+  description = "A map of maps of string for the Route Tables"
+  default = {
+    private = {
+      vpc = "vpc-a-virginia-prod"
+    }
   }
 }
